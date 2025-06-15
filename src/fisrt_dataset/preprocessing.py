@@ -3,7 +3,7 @@ from sklearn.preprocessing import StandardScaler
 
 
 def read_file():
-    path = r"C:\Users\marta\PycharmProjects\Eksploracja_danych\data\Airline_Delay_Cause (1).csv"
+    path = r"..\data\Airline_Delay_Cause (1).csv"
     df = pd.read_csv(path)
     df = pd.DataFrame(df)
     print(df.head())
@@ -51,14 +51,6 @@ def vectorization(df):
     df = pd.get_dummies(df, columns=categorical_columns, dtype=int, drop_first=True)
     return df
 
-
-# def standarization(df):
-#     numerical_columns = ['arr_flights', 'arr_cancelled', 'arr_diverted']
-#     scaler = StandardScaler()
-#
-#     df.loc[:, numerical_columns] = scaler.fit_transform(df[numerical_columns])
-#
-#     return df
 
 def preprocessing_firt_dataset():
     df = read_file()

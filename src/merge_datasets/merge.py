@@ -14,7 +14,7 @@ def merge_datasets_by_month(df1, df2):
     df2_monthly = df2.groupby('year_month').mean(numeric_only=True).reset_index()
     merged_df = df1.merge(df2_monthly, on='year_month', how='left')
 
-    #puste wartości po megrowaniu zaspętowane są mediana
+    #puste wartości po megrowaniu zastępowane są mediana
     for col in merged_df.columns:
         if col != 'year_month' and merged_df[col].isnull().any():
             mediana = merged_df[col].median()
@@ -36,17 +36,6 @@ def merge_datasets_by_month(df1, df2):
     print(merged_df)
     return merged_df
 
-# def data_cleaning(merged):
-#     merged = merged.drop(columns=['year'])
-#     merged = merged.drop(columns=['time'])
-#
-#     weather_cols = ['tavg', 'tmin', 'tmax', 'prcp', 'wdir', 'wspd', 'pres']
-#
-#     for col in weather_cols:
-#         merged[col] = merged[col].fillna(merged[col].mean())
-#
-#
-#     return merged
 def standarization(merged_df):
     numerical_columns = ['arr_flights', 'arr_cancelled', 'arr_diverted', 'tavg', 'tmin', 'tmax', 'prcp', 'wdir', 'wspd', 'pres']
     scaler = StandardScaler()
@@ -59,6 +48,11 @@ def standarization(merged_df):
 
 def merging():
     merged_df = merge_datasets_by_month(df1,df2)
+    merged_df.describe()
+    srednia_lotow = merged_df['arr_flights'].mean()
+    print(f"Średnia ilość lotów na wiersz: {srednia_lotow}")
     merged_df = standarization(merged_df)
+
     return merged_df
+
 

@@ -1,4 +1,6 @@
 # ✈️ Boston Flight Delay Prediction
+Flight Delay Data dataset link - https://www.kaggle.com/datasets/sriharshaeedala/airline-delay?resource=download
+Boston Weather 2013-2023 dataset link - https://www.kaggle.com/datasets/swaroopmeher/boston-weather-2013-2023
 
 This project predicts the number of flights delayed by more than 15 minutes using a neural network. The dataset is created by merging flight statistics with weather data. All features are standardized to improve model training.
 

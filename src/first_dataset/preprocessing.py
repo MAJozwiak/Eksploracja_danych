@@ -52,7 +52,6 @@ def vectorization(df):
 
     return df
 
-
 def preprocessing_firt_dataset():
     df = read_file()
     df = filter_Boston_airports(df)

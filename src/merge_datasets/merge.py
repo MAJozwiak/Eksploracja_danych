@@ -1,6 +1,6 @@
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
-from src.fisrt_dataset.preprocessing import preprocessing_firt_dataset
+from src.first_dataset.preprocessing import preprocessing_firt_dataset
 from src.second_dataset.preprocessing import preprocessing_second_dataset
 
 df1 = preprocessing_firt_dataset()

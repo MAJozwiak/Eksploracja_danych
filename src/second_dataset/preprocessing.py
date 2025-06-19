@@ -3,7 +3,7 @@ from sklearn.preprocessing import StandardScaler
 
 
 def read_file():
-    path = r"..\data\boston_weather_data.csv"
+    path = r"C:\Users\marta\PycharmProjects\Eksploracja_danych\data\boston_weather_data.csv"
     df = pd.read_csv(path)
     df = pd.DataFrame(df)
     print(df.head())

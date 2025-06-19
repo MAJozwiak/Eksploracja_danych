@@ -1,12 +1,11 @@
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
-
 
 def read_file():
-    path = r"..\data\Airline_Delay_Cause (1).csv"
+    path = r"C:\Users\marta\PycharmProjects\Eksploracja_danych\data\Airline_Delay_Cause (1).csv"
     df = pd.read_csv(path)
     df = pd.DataFrame(df)
     print(df.head())
+
     return df
 
 def filter_Boston_airports(df):
@@ -14,12 +13,13 @@ def filter_Boston_airports(df):
 
     mask = df['airport_name'].str.contains("Boston", case=False, na=False)
     unikalne = df.loc[mask, 'airport_name'].nunique()
-    print(f"Liczba unikalnych wartości zawierających 'Boston': {unikalne}")
-    print(f"Lotniska zawierając słowo Boston0:{df.loc[mask, 'airport_name'].unique()}")
+    print(f"Unique value which contains 'Boston': {unikalne}")
+    print(f"Airport name with 'Boston':{df.loc[mask, 'airport_name'].unique()}")
 
     df = df.drop(columns=['airport'])
     df = df[df['airport_name'] == 'Boston, MA: Logan International']
     df = df.drop(columns=['airport_name'])
+
     return df
 
 def data_cleaning(df):
@@ -49,6 +49,7 @@ def vectorization(df):
     df = df.drop(columns=['carrier_name'])
     categorical_columns = ['carrier']
     df = pd.get_dummies(df, columns=categorical_columns, dtype=int, drop_first=True)
+
     return df
 
 
@@ -57,7 +58,6 @@ def preprocessing_firt_dataset():
     df = filter_Boston_airports(df)
     df = data_cleaning(df)
     df = vectorization(df)
-    #standarization(df)
     print(df.head)
 
     return df

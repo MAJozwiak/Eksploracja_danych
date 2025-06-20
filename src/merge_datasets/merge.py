@@ -21,7 +21,7 @@ def merge_datasets_by_month(df1, df2):
             merged_df[col].fillna(mediana, inplace=True)
 
     #usuwane kolumna year_month zamieniana jest na string
-    base_date = pd.Period('2000-01', freq='M')
+    base_date = pd.Period('2013-01', freq='M')
     merged_df['year_month'] = merged_df['year_month'].apply(lambda x: (pd.Period(x, freq='M') - base_date).n)
 
     #usuwane są kolumny "year" i "month"

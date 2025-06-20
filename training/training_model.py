@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 from tensorflow.keras.callbacks import EarlyStopping
 
+
 def train(merged):
     X = merged.drop(columns=['arr_del15']).values
     y = merged['arr_del15'].values
